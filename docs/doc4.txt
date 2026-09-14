@@ -1,0 +1,1 @@
+JavaScript is a scripting language mainly used to build interactive web pages. JavaScript runs in the browser and also on servers using Node runtime environments.

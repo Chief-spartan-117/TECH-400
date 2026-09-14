@@ -1,0 +1,1 @@
+C is a low level programming language that gives programmers direct control over memory. C is often used to build operating systems and embedded systems.

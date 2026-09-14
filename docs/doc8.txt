@@ -1,0 +1,1 @@
+Machine learning is increasingly used to rank search results, but classic Boolean and vector space models remain the foundation of many retrieval systems.
