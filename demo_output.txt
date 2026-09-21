@@ -1,0 +1,41 @@
+======================================================================
+DOCUMENT COLLECTION
+======================================================================
+  d1: doc1_artificial_intelligence.txt
+  d2: doc2_machine_learning.txt
+  d3: doc3_large_language_model.txt
+  d4: doc4_nasa.txt
+  d5: doc5_mars.txt
+  d6: doc6_association_football.txt
+  d7: doc7_basketball.txt
+  d8: doc8_climate_change.txt
+
+======================================================================
+VOCABULARY SIZE: 601 unique terms
+======================================================================
+  sample terms: absorb, accordance, accuracy, achieving, across, actions, active, activities, additional, administration, advance, advanced, advances, advisory, aeronautics
+
+======================================================================
+COSINE SIMILARITY MATRIX (TF-IDF vectors)
+======================================================================
+        d1      d2      d3      d4      d5      d6      d7      d8      
+  d1     1.000   0.207   0.067   0.067   0.005   0.011   0.007   0.006   
+  d2     0.207   1.000   0.059   0.007   0.002   0.003   0.002   0.006   
+  d3     0.067   0.059   1.000   0.007   0.002   0.002   0.002   0.018   
+  d4     0.067   0.007   0.007   1.000   0.021   0.005   0.009   0.021   
+  d5     0.005   0.002   0.002   0.021   1.000   0.009   0.000   0.052   
+  d6     0.011   0.003   0.002   0.005   0.009   1.000   0.127   0.002   
+  d7     0.007   0.002   0.002   0.009   0.000   0.127   1.000   0.009   
+  d8     0.006   0.006   0.018   0.021   0.052   0.002   0.009   1.000   
+
+======================================================================
+MOST SIMILAR / LEAST SIMILAR PAIRS
+======================================================================
+  Top 3 most similar pairs:
+    0.207  doc1_artificial_intelligence.txt  <->  doc2_machine_learning.txt
+    0.127  doc6_association_football.txt  <->  doc7_basketball.txt
+    0.067  doc1_artificial_intelligence.txt  <->  doc3_large_language_model.txt
+  Bottom 3 least similar pairs:
+    0.002  doc2_machine_learning.txt  <->  doc7_basketball.txt
+    0.002  doc6_association_football.txt  <->  doc8_climate_change.txt
+    0.000  doc5_mars.txt  <->  doc7_basketball.txt
