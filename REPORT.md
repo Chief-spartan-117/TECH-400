@@ -2,23 +2,23 @@
 
 ## 1. Objective
 
-For this assignment I wanted to see how well a classic information
-retrieval technique — the **Vector Space Model (VSM)** — could pick up on
-topical relationships between documents just from their word usage, no
-machine learning training involved. The approach here is **TF-IDF**
-weighting combined with **cosine similarity**, computed between every
-pair of documents in a small collection.
+This assignment looks at how well a classic information retrieval
+technique — the **Vector Space Model (VSM)** — picks up on topical
+relationships between documents based purely on word usage, with no
+machine learning training involved. The approach combines **TF-IDF**
+term weighting with **cosine similarity**, computed between every pair
+of documents in a small collection.
 
 ## 2. Document Collection
 
-I needed 5-10 real, publicly available documents, so I pulled 8 articles
-from Wikipedia (public content, CC BY-SA licensed) and saved each one as
-a plain `.txt` file in `docs/`. Rather than picking random topics, I
-deliberately grouped them into related pairs — two AI/ML articles, one
-that's AI-adjacent, two about space, two about team sports, and one on
-climate. The idea was that if the model works, related topics should
-score noticeably higher than unrelated ones, which makes the results
-easy to eyeball and sanity-check.
+The task called for 5–10 real, publicly available documents, so 8
+articles were pulled from Wikipedia (public content, CC BY-SA licensed)
+and saved as plain `.txt` files in `docs/`. Rather than picking random
+topics, they were deliberately grouped into related pairs — two AI/ML
+articles, one AI-adjacent article, two about space, two about team
+sports, and one on climate. The reasoning: if the model works, related
+topics should score noticeably higher than unrelated ones, which makes
+the results easy to sanity-check.
 
 | ID | File | Topic | Source |
 |----|------|-------|--------|
@@ -31,11 +31,11 @@ easy to eyeball and sanity-check.
 | d7 | doc7_basketball.txt | Basketball | https://en.wikipedia.org/wiki/Basketball |
 | d8 | doc8_climate_change.txt | Climate Change | https://en.wikipedia.org/wiki/Climate_change |
 
-To keep the text clean (no HTML, no nav bars, no infobox clutter) I
-pulled each article through Wikipedia's REST API using
+To keep the text clean (no HTML, no nav bars, no infobox clutter), each
+article was pulled through Wikipedia's REST API using
 `action=query&prop=extracts&explaintext=1` instead of scraping the
 rendered page. Each file ended up around 1.2 KB, with a short `Title:` /
-`Source:` header on top so the origin is traceable.
+`Source:` header on top so the origin stays traceable.
 
 **Snapshot — document collection loaded:**
 
@@ -43,27 +43,27 @@ rendered page. Each file ended up around 1.2 KB, with a short `Title:` /
 
 ## 3. Method: Vector Space Model
 
-I built the whole pipeline from scratch in `vsm.py` — no scikit-learn,
-no pre-built TF-IDF vectorizer. numpy only shows up for the actual vector
+The pipeline was built from scratch in `vsm.py` — no scikit-learn, no
+pre-built TF-IDF vectorizer. numpy is used only for the actual vector
 math (dot products, norms), not for any part of the algorithm itself.
 Here's roughly how it works, in the order the code runs it:
 
 1. **Tokenize & normalize.** Lowercase everything, pull out alphabetic
    tokens with a simple regex (`[a-z]+`), strip a small stopword list,
-   and drop anything 2 characters or shorter. Nothing fancy — no
-   stemming or lemmatization, just enough cleanup to stop noise words
-   from swamping the vectors.
-2. **Build the vocabulary.** Union of every term across all 8 documents.
-   For this collection that came out to 601 unique terms.
+   and drop anything 2 characters or shorter. No stemming or
+   lemmatization — just enough cleanup to stop noise words from
+   swamping the vectors.
+2. **Build the vocabulary.** Union of every term across all 8
+   documents. For this collection that came out to 601 unique terms.
 3. **Term Frequency (TF).** `tf(t, d) = count(t in d) / len(d)` — how
-   often a term shows up in a document, normalized by document length so
-   longer documents don't automatically get bigger scores.
+   often a term shows up in a document, normalized by document length
+   so longer documents don't automatically score higher.
 4. **Inverse Document Frequency (IDF).** `idf(t) = log(N / df(t))`,
-   where `N` is the total number of documents and `df(t)` is how many of
-   them contain term `t`. This is really the important part — it pushes
+   where `N` is the total number of documents and `df(t)` is how many
+   of them contain term `t`. This is the important part — it pushes
    down words that show up everywhere (things like "system" or "data")
-   and gives more weight to words that are distinctive to just a few
-   documents (like "neural", "mars", or "goalkeeper").
+   and gives more weight to words distinctive to just a few documents
+   (like "neural", "mars", or "goalkeeper").
 5. **TF-IDF vector.** Multiply the two together —
    `tfidf(t, d) = tf(t, d) * idf(t)` — and each document ends up
    represented as a point in a 601-dimensional space, one axis per
@@ -74,8 +74,8 @@ Here's roughly how it works, in the order the code runs it:
    similarity(A, B) = (A · B) / (‖A‖ * ‖B‖)
    ```
 
-   This is just the cosine of the angle between the vectors. It doesn't
-   care how long the documents are (that's already handled by the TF
+   This is the cosine of the angle between the vectors. It doesn't
+   care how long the documents are (already handled by the TF
    normalization above), and since none of the TF-IDF weights are
    negative, the score always lands somewhere in `[0, 1]`.
 
@@ -102,9 +102,8 @@ def cosine_similarity(v1: np.ndarray, v2: np.ndarray) -> float:
     return float(dot / norm) if norm > 0 else 0.0
 ```
 
-Full implementation is in [`vsm.py`](vsm.py) if you want to see the rest
-(document loading, the driving loop that builds the pairwise matrix,
-etc).
+Full implementation is in [`vsm.py`](vsm.py), including document
+loading and the driving loop that builds the pairwise matrix.
 
 ## 4. Results
 
@@ -125,8 +124,8 @@ Full matrix, for reference:
 |**d7**|0.007|0.002|0.002|0.009|0.000|0.127|1.000|0.009|
 |**d8**|0.006|0.006|0.018|0.021|0.052|0.002|0.009|1.000|
 
-I also plotted it as a heatmap, which honestly makes the pattern a lot
-easier to spot than staring at the numbers:
+Plotted as a heatmap, the pattern is a lot easier to spot than in the
+raw numbers:
 
 ![Similarity heatmap](screenshots/04_similarity_heatmap.png)
 
@@ -152,29 +151,31 @@ And the top/bottom pairs, pulled straight from the script's own output:
 
 ## 5. Discussion
 
-What I like about these results is that they line up with what you'd
-expect just from reading the topics, which is a decent sign the model is
-actually capturing something real and not just noise:
+The results line up with what the topic groupings would suggest, which
+is a good sign the model is capturing something real and not just
+noise:
 
-- **AI ↔ Machine Learning came out on top at 0.207**, which makes sense
-  — ML is basically a subfield of AI, so the two articles share a lot of
-  vocabulary (`learning`, `model`, `neural`, `data` all show up in both).
+- **AI ↔ Machine Learning came out on top at 0.207**, which makes
+  sense — ML is basically a subfield of AI, so the two articles share a
+  lot of vocabulary (`learning`, `model`, `neural`, `data` all show up
+  in both).
 - **Football ↔ Basketball was second at 0.127.** Both are team-sport
-  articles, so words like `team`, `player`, `game`, and `league` overlap
-  heavily.
-- Every pair that crosses topic clusters — sports vs. climate, space vs.
-  sports, whatever — scores close to zero. That's the model correctly
-  telling us there's no real topical connection there.
-- One thing I found interesting: Large Language Model correlates more
-  with AI (0.067) than with Machine Learning (0.059), even though you'd
-  think ML and LLMs would be closer. My guess is the AI article uses more
-  of the same framing language ("intelligence", "reasoning",
-  "perception") that also shows up when LLMs get described.
+  articles, so words like `team`, `player`, `game`, and `league`
+  overlap heavily.
+- Every pair that crosses topic clusters — sports vs. climate, space
+  vs. sports, and so on — scores close to zero. That correctly reflects
+  no real topical connection between them.
+- One notable result: Large Language Model correlates more with AI
+  (0.067) than with Machine Learning (0.059), even though ML and LLMs
+  might be expected to be closer. A likely explanation is that the AI
+  article uses more of the same framing language ("intelligence",
+  "reasoning", "perception") that also shows up when LLMs are
+  described.
 
-The IDF term is really doing most of the heavy lifting here. Without it,
+The IDF term is doing most of the heavy lifting here. Without it,
 common scaffolding words that appear in basically every article would
-dominate the vectors and every pair would score close to 1.0, regardless
-of topic. IDF suppresses those and lets the words that are actually
+dominate the vectors and every pair would score close to 1.0,
+regardless of topic. IDF suppresses those and lets the words actually
 distinctive to each topic drive the cosine score.
 
 ## 6. How to Reproduce
