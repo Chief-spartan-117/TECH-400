@@ -259,7 +259,13 @@ doc.add_paragraph(
     "patterns shared across all documents."
 )
 
-doc.add_heading("7. How to Reproduce", level=1)
+doc.add_heading("7. GitHub Repository", level=1)
+doc.add_paragraph(
+    "Full source code, documents, and this report are published at: "
+    "https://github.com/Chief-spartan-117/TECH-400/tree/vsm-document-similarity"
+)
+
+doc.add_heading("8. How to Reproduce", level=1)
 repro = '''pip install -r requirements.txt
 python3 vsm.py                 # prints similarity matrix + top/bottom pairs
 python3 make_heatmap.py        # writes screenshots/04_similarity_heatmap.png
@@ -269,10 +275,40 @@ run = p.add_run(repro)
 run.font.name = "Courier New"
 run.font.size = Pt(9)
 
-doc.add_heading("8. GitHub Repository", level=1)
+doc.add_heading("9. References", level=1)
+references = [
+    "Salton, G., Wong, A., & Yang, C. S. (1975). A vector space model for "
+    "automatic indexing. Communications of the ACM, 18(11), 613-620.",
+    "Manning, C. D., Raghavan, P., & Schutze, H. (2008). Introduction to "
+    "Information Retrieval. Cambridge University Press. (Chapters 6-7: "
+    "term weighting, TF-IDF, and the vector space model.)",
+    "Wikipedia contributors. \"Artificial intelligence.\" Wikipedia, The "
+    "Free Encyclopedia. https://en.wikipedia.org/wiki/Artificial_intelligence",
+    "Wikipedia contributors. \"Machine learning.\" Wikipedia, The Free "
+    "Encyclopedia. https://en.wikipedia.org/wiki/Machine_learning",
+    "Wikipedia contributors. \"Large language model.\" Wikipedia, The Free "
+    "Encyclopedia. https://en.wikipedia.org/wiki/Large_language_model",
+    "Wikipedia contributors. \"NASA.\" Wikipedia, The Free Encyclopedia. "
+    "https://en.wikipedia.org/wiki/NASA",
+    "Wikipedia contributors. \"Mars.\" Wikipedia, The Free Encyclopedia. "
+    "https://en.wikipedia.org/wiki/Mars",
+    "Wikipedia contributors. \"Association football.\" Wikipedia, The Free "
+    "Encyclopedia. https://en.wikipedia.org/wiki/Association_football",
+    "Wikipedia contributors. \"Basketball.\" Wikipedia, The Free "
+    "Encyclopedia. https://en.wikipedia.org/wiki/Basketball",
+    "Wikipedia contributors. \"Climate change.\" Wikipedia, The Free "
+    "Encyclopedia. https://en.wikipedia.org/wiki/Climate_change",
+    "Wikimedia Foundation. MediaWiki Action API -- prop=extracts. "
+    "https://www.mediawiki.org/wiki/API:Query#Additional_notes (used to "
+    "retrieve plain-text article extracts, Section 2).",
+    "Harris, C.R. et al. (2020). Array programming with NumPy. Nature, "
+    "585, 357-362. https://numpy.org (used for vector arithmetic in vsm.py).",
+]
+for r in references:
+    doc.add_paragraph(r, style="List Number")
 doc.add_paragraph(
-    "Full source code, documents, and this report are published at: "
-    "[GitHub link — see submission]"
+    "All Wikipedia content is licensed under Creative Commons "
+    "Attribution-ShareAlike 4.0 (CC BY-SA 4.0)."
 )
 
 doc.save("REPORT.docx")

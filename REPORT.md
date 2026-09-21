@@ -209,7 +209,12 @@ functioning as intended. The results also illustrate the importance of
 IDF weighting in distinguishing topic-specific vocabulary from common
 language patterns shared across all documents.
 
-## 7. How to Reproduce
+## 7. GitHub Repository
+
+Full source code, documents, and this report are published at:
+https://github.com/Chief-spartan-117/TECH-400/tree/vsm-document-similarity
+
+## 8. How to Reproduce
 
 ```bash
 pip install -r requirements.txt
@@ -218,7 +223,40 @@ python3 make_heatmap.py        # writes screenshots/04_similarity_heatmap.png
 python3 make_screenshots.py    # re-renders terminal-style snapshot PNGs
 ```
 
-## 8. Files
+## 9. References
+
+1. Salton, G., Wong, A., & Yang, C. S. (1975). A vector space model for
+   automatic indexing. *Communications of the ACM*, 18(11), 613–620.
+2. Manning, C. D., Raghavan, P., & Schütze, H. (2008). *Introduction to
+   Information Retrieval*. Cambridge University Press. (Chapters 6–7:
+   term weighting, TF-IDF, and the vector space model.)
+3. Wikipedia contributors. "Artificial intelligence." *Wikipedia, The
+   Free Encyclopedia*. https://en.wikipedia.org/wiki/Artificial_intelligence
+4. Wikipedia contributors. "Machine learning." *Wikipedia, The Free
+   Encyclopedia*. https://en.wikipedia.org/wiki/Machine_learning
+5. Wikipedia contributors. "Large language model." *Wikipedia, The Free
+   Encyclopedia*. https://en.wikipedia.org/wiki/Large_language_model
+6. Wikipedia contributors. "NASA." *Wikipedia, The Free Encyclopedia*.
+   https://en.wikipedia.org/wiki/NASA
+7. Wikipedia contributors. "Mars." *Wikipedia, The Free Encyclopedia*.
+   https://en.wikipedia.org/wiki/Mars
+8. Wikipedia contributors. "Association football." *Wikipedia, The Free
+   Encyclopedia*. https://en.wikipedia.org/wiki/Association_football
+9. Wikipedia contributors. "Basketball." *Wikipedia, The Free
+   Encyclopedia*. https://en.wikipedia.org/wiki/Basketball
+10. Wikipedia contributors. "Climate change." *Wikipedia, The Free
+    Encyclopedia*. https://en.wikipedia.org/wiki/Climate_change
+11. Wikimedia Foundation. MediaWiki Action API — `prop=extracts`.
+    https://www.mediawiki.org/wiki/API:Query#Additional_notes (used to
+    retrieve plain-text article extracts in Section 2).
+12. Harris, C.R. et al. (2020). Array programming with NumPy. *Nature*,
+    585, 357–362. https://numpy.org (used for vector arithmetic in
+    `vsm.py`).
+
+All Wikipedia content is licensed under Creative Commons
+Attribution-ShareAlike 4.0 (CC BY-SA 4.0).
+
+## 10. Files
 
 ```
 doc-similarity-vsm/
