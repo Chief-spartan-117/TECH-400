@@ -15,17 +15,24 @@ title = doc.add_heading("Document Similarity via Vector Space Model", level=0)
 
 doc.add_heading("1. Objective", level=1)
 doc.add_paragraph(
-    "Compute pairwise similarity scores between a set of documents using a "
-    "Vector Space Model (VSM) with TF-IDF term weighting and cosine similarity."
+    "For this assignment I wanted to see how well a classic information "
+    "retrieval technique -- the Vector Space Model (VSM) -- could pick up on "
+    "topical relationships between documents just from their word usage, no "
+    "machine learning training involved. The approach here is TF-IDF "
+    "weighting combined with cosine similarity, computed between every pair "
+    "of documents in a small collection."
 )
 
 doc.add_heading("2. Document Collection", level=1)
 doc.add_paragraph(
-    "8 documents were gathered from Wikipedia (public, freely accessible content, "
-    "CC BY-SA) and saved as plain .txt files in docs/. Topics were chosen in four "
-    "related pairs so the similarity results are easy to sanity check: two AI/ML "
-    "topics, one AI-adjacent topic, two space topics, two sports topics, and one "
-    "climate topic."
+    "I needed 5-10 real, publicly available documents, so I pulled 8 articles "
+    "from Wikipedia (public content, CC BY-SA licensed) and saved each one as "
+    "a plain .txt file in docs/. Rather than picking random topics, I "
+    "deliberately grouped them into related pairs -- two AI/ML articles, one "
+    "that's AI-adjacent, two about space, two about team sports, and one on "
+    "climate. The idea was that if the model works, related topics should "
+    "score noticeably higher than unrelated ones, which makes the results "
+    "easy to eyeball and sanity-check."
 )
 
 table_data = [
@@ -47,28 +54,48 @@ for id_, topic, src in table_data:
     row[0].text, row[1].text, row[2].text = id_, topic, src
 
 doc.add_paragraph()
+doc.add_paragraph(
+    "To keep the text clean (no HTML, no nav bars, no infobox clutter) I "
+    "pulled each article through Wikipedia's REST API using "
+    "action=query&prop=extracts&explaintext=1 instead of scraping the "
+    "rendered page. Each file ended up around 1.2 KB, with a short Title: / "
+    "Source: header on top so the origin is traceable."
+)
 doc.add_paragraph("Snapshot — document collection loaded:")
 doc.add_picture("screenshots/01_document_collection.png", width=Inches(5.5))
 
 doc.add_heading("3. Method: Vector Space Model", level=1)
 doc.add_paragraph(
-    "Implemented from scratch in vsm.py (numpy used only for vector arithmetic, "
-    "not for the algorithm itself):"
+    "I built the whole pipeline from scratch in vsm.py -- no scikit-learn, "
+    "no pre-built TF-IDF vectorizer. numpy only shows up for the actual "
+    "vector math (dot products, norms), not for any part of the algorithm "
+    "itself. Here's roughly how it works, in the order the code runs it:"
 )
 steps = [
-    "Tokenize & normalize — lowercase, strip to alphabetic tokens with a regex "
-    "([a-z]+), drop a small stopword list, drop tokens ≤ 2 chars.",
-    "Build vocabulary — union of all terms across all documents (601 unique "
-    "terms across the 8-document collection).",
-    "Term Frequency (TF) — tf(t, d) = count(t in d) / len(d), raw count "
-    "normalized by document length.",
-    "Inverse Document Frequency (IDF) — idf(t) = log(N / df(t)), where N is "
-    "the number of documents and df(t) is the number of documents containing "
-    "term t. Down-weights terms common across documents, up-weights distinctive terms.",
-    "TF-IDF vector — tfidf(t, d) = tf(t, d) * idf(t), one scalar per "
-    "vocabulary term, giving each document an N-dimensional vector.",
-    "Cosine similarity — similarity(A, B) = (A · B) / (‖A‖ * ‖B‖). Scale-"
-    "invariant, bounded in [0, 1] since TF-IDF weights are non-negative.",
+    "Tokenize & normalize. Lowercase everything, pull out alphabetic tokens "
+    "with a simple regex ([a-z]+), strip a small stopword list, and drop "
+    "anything 2 characters or shorter. Nothing fancy -- no stemming or "
+    "lemmatization, just enough cleanup to stop noise words from swamping "
+    "the vectors.",
+    "Build the vocabulary. Union of every term across all 8 documents. For "
+    "this collection that came out to 601 unique terms.",
+    "Term Frequency (TF). tf(t, d) = count(t in d) / len(d) -- how often a "
+    "term shows up in a document, normalized by document length so longer "
+    "documents don't automatically get bigger scores.",
+    "Inverse Document Frequency (IDF). idf(t) = log(N / df(t)), where N is "
+    "the total number of documents and df(t) is how many of them contain "
+    "term t. This is really the important part -- it pushes down words that "
+    "show up everywhere (things like \"system\" or \"data\") and gives more "
+    "weight to words distinctive to just a few documents (like \"neural\", "
+    "\"mars\", or \"goalkeeper\").",
+    "TF-IDF vector. Multiply the two together -- tfidf(t, d) = tf(t, d) * "
+    "idf(t) -- and each document ends up represented as a point in a "
+    "601-dimensional space, one axis per vocabulary term.",
+    "Cosine similarity. similarity(A, B) = (A · B) / (‖A‖ * ‖B‖). This is "
+    "just the cosine of the angle between the vectors. It doesn't care how "
+    "long the documents are (already handled by the TF normalization "
+    "above), and since none of the TF-IDF weights are negative, the score "
+    "always lands somewhere in [0, 1].",
 ]
 for s in steps:
     doc.add_paragraph(s, style="List Number")
@@ -95,13 +122,17 @@ run = p.add_run(code)
 run.font.name = "Courier New"
 run.font.size = Pt(9)
 
-doc.add_paragraph("Full implementation: vsm.py (see GitHub repository).")
+doc.add_paragraph(
+    "Full implementation is in vsm.py (see GitHub repository) if you want "
+    "to see the rest -- document loading, the driving loop that builds the "
+    "pairwise matrix, etc."
+)
 
 doc.add_heading("4. Results", level=1)
 doc.add_paragraph("Snapshot — cosine similarity matrix (terminal output):")
 doc.add_picture("screenshots/02_similarity_matrix.png", width=Inches(5.5))
 
-doc.add_paragraph("Full similarity matrix:")
+doc.add_paragraph("Full matrix, for reference:")
 mt = doc.add_table(rows=1, cols=len(short) + 1)
 mt.style = "Light Grid Accent 1"
 mt.rows[0].cells[0].text = ""
@@ -114,11 +145,14 @@ for i, row_vals in enumerate(sim_matrix):
         row[j + 1].text = f"{v:.3f}"
 
 doc.add_paragraph()
-doc.add_paragraph("Snapshot — heatmap:")
+doc.add_paragraph(
+    "I also plotted it as a heatmap, which honestly makes the pattern a lot "
+    "easier to spot than staring at the numbers:"
+)
 doc.add_picture("screenshots/04_similarity_heatmap.png", width=Inches(5.5))
 
 doc.add_paragraph()
-doc.add_paragraph("Snapshot — top/bottom similar pairs:")
+doc.add_paragraph("And the top/bottom pairs, pulled straight from the script's own output:")
 doc.add_picture("screenshots/03_similar_pairs.png", width=Inches(5.5))
 
 doc.add_heading("Top 3 most similar pairs", level=2)
@@ -150,27 +184,34 @@ for score, a, b in [
     row[1].text = f"{a} ↔ {b}"
 
 doc.add_heading("5. Discussion", level=1)
+doc.add_paragraph(
+    "What I like about these results is that they line up with what you'd "
+    "expect just from reading the topics, which is a decent sign the model "
+    "is actually capturing something real and not just noise:"
+)
 discussion = [
-    "AI ↔ Machine Learning (0.207) is the highest score — expected, since ML "
-    "is a subfield of AI and the two articles share heavy vocabulary overlap "
-    "(learning, model, neural, data).",
-    "Football ↔ Basketball (0.127) is the second-highest — both are team "
-    "sports articles sharing terms like team, player, game, league.",
-    "Cross-cluster pairs (e.g. sports vs. climate, space vs. sports) all "
-    "score near 0, correctly showing the model finds no meaningful topical "
-    "overlap between unrelated documents.",
-    "Large Language Model correlates with AI (0.067) more than with ML "
-    "(0.059), consistent with LLMs being described in AI-article terms as "
-    "well as ML terms.",
+    "AI ↔ Machine Learning came out on top at 0.207, which makes sense -- ML "
+    "is basically a subfield of AI, so the two articles share a lot of "
+    "vocabulary (learning, model, neural, data all show up in both).",
+    "Football ↔ Basketball was second at 0.127. Both are team-sport "
+    "articles, so words like team, player, game, and league overlap heavily.",
+    "Every pair that crosses topic clusters -- sports vs. climate, space "
+    "vs. sports, whatever -- scores close to zero. That's the model "
+    "correctly telling us there's no real topical connection there.",
+    "One thing I found interesting: Large Language Model correlates more "
+    "with AI (0.067) than with Machine Learning (0.059), even though you'd "
+    "think ML and LLMs would be closer. My guess is the AI article uses "
+    "more of the same framing language (\"intelligence\", \"reasoning\", "
+    "\"perception\") that also shows up when LLMs get described.",
 ]
 for d in discussion:
     doc.add_paragraph(d, style="List Bullet")
 doc.add_paragraph(
-    "TF-IDF weighting is what makes this work: without IDF down-weighting, "
-    "common English scaffolding words would dominate every vector and "
-    "flatten all similarity scores toward 1.0. IDF suppresses ubiquitous "
-    "terms and lets the distinctive vocabulary of each topic drive the "
-    "cosine score."
+    "The IDF term is really doing most of the heavy lifting here. Without "
+    "it, common scaffolding words that appear in basically every article "
+    "would dominate the vectors and every pair would score close to 1.0, "
+    "regardless of topic. IDF suppresses those and lets the words that are "
+    "actually distinctive to each topic drive the cosine score."
 )
 
 doc.add_heading("6. How to Reproduce", level=1)
