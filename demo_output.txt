@@ -1,0 +1,45 @@
+======================================================================
+CORPUS STATS
+======================================================================
+  documents: 8
+  avg doc length (tokens): 123.8
+  vocabulary size: 601
+
+======================================================================
+QUERY: "machine learning neural network"
+======================================================================
+  Rank BM25 doc                            score     LM-JM doc                           score     
+  1    doc2_machine_learning.txt           6.612     doc2_machine_learning.txt           -17.873   
+  2    doc3_large_language_model.txt       3.453     doc3_large_language_model.txt       -21.081   
+  3    doc1_artificial_intelligence.txt    3.157     doc1_artificial_intelligence.txt    -23.480   
+  4    doc4_nasa.txt                       1.843     doc4_nasa.txt                       -25.615   
+  5    doc5_mars.txt                       0.000     doc5_mars.txt                       -29.529   
+  6    doc6_association_football.txt       0.000     doc6_association_football.txt       -29.529   
+  7    doc7_basketball.txt                 0.000     doc7_basketball.txt                 -29.529   
+  8    doc8_climate_change.txt             0.000     doc8_climate_change.txt             -29.529   
+
+======================================================================
+QUERY: "space exploration mars mission"
+======================================================================
+  Rank BM25 doc                            score     LM-JM doc                           score     
+  1    doc4_nasa.txt                       6.324     doc4_nasa.txt                       -19.990   
+  2    doc5_mars.txt                       3.591     doc5_mars.txt                       -28.508   
+  3    doc1_artificial_intelligence.txt    1.328     doc1_artificial_intelligence.txt    -30.542   
+  4    doc2_machine_learning.txt           0.000     doc2_machine_learning.txt           -32.812   
+  5    doc3_large_language_model.txt       0.000     doc3_large_language_model.txt       -32.812   
+  6    doc6_association_football.txt       0.000     doc6_association_football.txt       -32.812   
+  7    doc7_basketball.txt                 0.000     doc7_basketball.txt                 -32.812   
+  8    doc8_climate_change.txt             0.000     doc8_climate_change.txt             -32.812   
+
+======================================================================
+QUERY: "football basketball team player"
+======================================================================
+  Rank BM25 doc                            score     LM-JM doc                           score     
+  1    doc6_association_football.txt       5.872     doc6_association_football.txt       -41.890   
+  2    doc7_basketball.txt                 5.462     doc7_basketball.txt                 -42.182   
+  3    doc1_artificial_intelligence.txt    0.000     doc1_artificial_intelligence.txt    -49.885   
+  4    doc2_machine_learning.txt           0.000     doc2_machine_learning.txt           -49.885   
+  5    doc3_large_language_model.txt       0.000     doc3_large_language_model.txt       -49.885   
+  6    doc4_nasa.txt                       0.000     doc4_nasa.txt                       -49.885   
+  7    doc5_mars.txt                       0.000     doc5_mars.txt                       -49.885   
+  8    doc8_climate_change.txt             0.000     doc8_climate_change.txt             -49.885   
