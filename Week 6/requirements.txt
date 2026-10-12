@@ -1,0 +1,5 @@
+# Retrieval and evaluation use only the Python standard library.
+# Required only to regenerate the Word report and PNG snapshots:
+python-docx>=1.1,<2
+Pillow>=10,<13
+

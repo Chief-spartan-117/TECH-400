@@ -1,0 +1,84 @@
+{
+  "label": "OFFLINE DEMONSTRATION (not full CISI benchmark)",
+  "rows": [
+    {
+      "query_id": "Q1",
+      "query": "history and editions of Dewey decimal classification",
+      "precision": 0.2,
+      "recall": 1.0,
+      "ap": 1.0,
+      "rr": 1.0,
+      "ndcg": 1.0
+    },
+    {
+      "query_id": "Q2",
+      "query": "technical information flow and communication in research organizations",
+      "precision": 0.4,
+      "recall": 1.0,
+      "ap": 1.0,
+      "rr": 1.0,
+      "ndcg": 1.0
+    },
+    {
+      "query_id": "Q3",
+      "query": "university library administration planning and services",
+      "precision": 0.4,
+      "recall": 1.0,
+      "ap": 1.0,
+      "rr": 1.0,
+      "ndcg": 1.0
+    },
+    {
+      "query_id": "Q4",
+      "query": "computer methods for automatic abstracting and indexing",
+      "precision": 0.4,
+      "recall": 1.0,
+      "ap": 1.0,
+      "rr": 1.0,
+      "ndcg": 1.0
+    },
+    {
+      "query_id": "Q5",
+      "query": "periodical articles interlibrary loan and document delivery",
+      "precision": 0.4,
+      "recall": 1.0,
+      "ap": 1.0,
+      "rr": 1.0,
+      "ndcg": 1.0
+    },
+    {
+      "query_id": "Q6",
+      "query": "precision recall and evaluation of ranked retrieval",
+      "precision": 0.2,
+      "recall": 1.0,
+      "ap": 1.0,
+      "rr": 1.0,
+      "ndcg": 1.0
+    },
+    {
+      "query_id": "Q7",
+      "query": "controlled vocabulary thesaurus and query expansion",
+      "precision": 0.2,
+      "recall": 1.0,
+      "ap": 1.0,
+      "rr": 1.0,
+      "ndcg": 1.0
+    },
+    {
+      "query_id": "Q8",
+      "query": "library acquisition and machine readable bibliographic records",
+      "precision": 0.4,
+      "recall": 1.0,
+      "ap": 0.5833333333333333,
+      "rr": 0.5,
+      "ndcg": 0.6934264036172708
+    }
+  ],
+  "mean": {
+    "precision": 0.32499999999999996,
+    "recall": 1.0,
+    "ap": 0.9479166666666666,
+    "rr": 0.9375,
+    "ndcg": 0.9616783004521589
+  }
+}

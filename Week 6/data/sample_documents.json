@@ -1,0 +1,21 @@
+[
+  {"id":"S001","title":"Editions of the Dewey Decimal Classification","author":"J. P. Comaromi","abstract":"A historical study of the Dewey Decimal Classification, its editions, continuing revision, and influence on librarianship."},
+  {"id":"S002","title":"Use Made of Technical Libraries","author":"M. Slater","abstract":"A study of information use in technical organizations, comparing library documents with personal contacts, desk collections, and oral communication."},
+  {"id":"S003","title":"Two Kinds of Power: An Essay on Bibliographic Control","author":"P. Wilson","abstract":"An analysis of how organizing writings and bibliographic records affects access to recorded knowledge and scholarly information."},
+  {"id":"S004","title":"Systems Analysis of a University Library","author":"M. K. Buckland","abstract":"Systems analysis is applied to academic library planning, management, service objectives, and evidence-based decisions in a university."},
+  {"id":"S005","title":"A Library Management Game","author":"P. Brophy","abstract":"A simulation game supports professional education by modeling library management decisions with mathematical methods and computer assistance."},
+  {"id":"S006","title":"Abstracting Concepts and Methods","author":"H. Borko","abstract":"Concepts, standards, writing methods, and computer techniques for preparing and evaluating abstracts and automatic text extracts."},
+  {"id":"S007","title":"Academic Library Buildings","author":"R. E. Ellsworth","abstract":"Guidance for librarians and architects planning, remodeling, and enlarging college and university library buildings."},
+  {"id":"S008","title":"The Academic Library","author":"E. I. Farber","abstract":"Essays on research libraries, collection development, literature, scholarship, professional reading, and service to students and faculty."},
+  {"id":"S009","title":"Access to Libraries in College","author":"R. T. Hyman","abstract":"A study of direct shelf access, browsing, classification, reader behavior, and professional ideas about open academic library collections."},
+  {"id":"S010","title":"Access to Periodical Resources","author":"V. E. Palmour","abstract":"A national plan for rapid access to journal articles through interlibrary loan, photocopy delivery, and comprehensive periodical collections."},
+  {"id":"S011","title":"The Acquisition of Library Materials","author":"S. Ford","abstract":"Selection policy, serials, centralized acquisition, order routines, automation, and practical methods for obtaining library materials."},
+  {"id":"S012","title":"Acquisition from Developing Regions","author":"D. A. Clarke","abstract":"European research libraries cooperate to acquire, describe, lend, and share publications from developing regions using machine-readable records."},
+  {"id":"S013","title":"Federal Report Numbering and Microfiche Readers","author":"H. Wooster","abstract":"Proposals concerning uniform report identifiers and usable microfiche readers for technical reports and document delivery."},
+  {"id":"S014","title":"Administration of the College Library","author":"G. R. Lyle","abstract":"College library administration should connect circulation, reference service, teaching, faculty support, student reading, and collection use."},
+  {"id":"S015","title":"Information Flow in Research Laboratories","author":"T. J. Allen and S. I. Cohen","abstract":"Communication networks in research and development laboratories are shaped by social relationships, work structure, external contacts, and reading."},
+  {"id":"S016","title":"Automatic Indexing Experiments","author":"Demonstration record","abstract":"Experiments compare term frequency, inverse document frequency, stop-word removal, stemming, and automatic indexing for document retrieval."},
+  {"id":"S017","title":"Evaluation of Ranked Retrieval","author":"Demonstration record","abstract":"Precision, recall, average precision, reciprocal rank, and discounted cumulative gain measure ranked search effectiveness against relevance judgments."},
+  {"id":"S018","title":"Construction and Use of a Thesaurus","author":"Demonstration record","abstract":"A controlled vocabulary connects broader, narrower, and related terms to improve indexing consistency and query expansion in retrieval systems."}
+]
+

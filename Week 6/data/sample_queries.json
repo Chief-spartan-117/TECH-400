@@ -1,0 +1,11 @@
+[
+  {"id":"Q1","text":"history and editions of Dewey decimal classification","relevant":["S001"]},
+  {"id":"Q2","text":"technical information flow and communication in research organizations","relevant":["S002","S015"]},
+  {"id":"Q3","text":"university library administration planning and services","relevant":["S004","S014"]},
+  {"id":"Q4","text":"computer methods for automatic abstracting and indexing","relevant":["S006","S016"]},
+  {"id":"Q5","text":"periodical articles interlibrary loan and document delivery","relevant":["S010","S013"]},
+  {"id":"Q6","text":"precision recall and evaluation of ranked retrieval","relevant":["S017"]},
+  {"id":"Q7","text":"controlled vocabulary thesaurus and query expansion","relevant":["S018"]},
+  {"id":"Q8","text":"library acquisition and machine readable bibliographic records","relevant":["S011","S012"]}
+]
+
