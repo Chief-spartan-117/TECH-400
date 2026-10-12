@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+.venv/
+data/CISI.ALL
+data/CISI.QRY
+data/CISI.REL
+

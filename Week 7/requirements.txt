@@ -1,0 +1,5 @@
+# Core retrieval/evaluation code uses the Python standard library only.
+# These packages regenerate the report and its PNG figures.
+python-docx>=1.1,<2
+Pillow>=10,<13
+

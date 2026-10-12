@@ -1,0 +1,237 @@
+{
+  "label": "OFFLINE DEMONSTRATION \u2014 NOT A FULL CISI BENCHMARK",
+  "documents": 18,
+  "queries": 8,
+  "vocabulary": 197,
+  "k": 5,
+  "models": {
+    "Binary overlap": {
+      "rows": [
+        {
+          "query_id": "Q1",
+          "precision": 0.2,
+          "recall": 1.0,
+          "ap": 1.0,
+          "rr": 1.0,
+          "ndcg": 1.0
+        },
+        {
+          "query_id": "Q2",
+          "precision": 0.4,
+          "recall": 1.0,
+          "ap": 1.0,
+          "rr": 1.0,
+          "ndcg": 1.0
+        },
+        {
+          "query_id": "Q3",
+          "precision": 0.4,
+          "recall": 1.0,
+          "ap": 0.8333333333333333,
+          "rr": 1.0,
+          "ndcg": 0.9197207891481876
+        },
+        {
+          "query_id": "Q4",
+          "precision": 0.4,
+          "recall": 1.0,
+          "ap": 0.8333333333333333,
+          "rr": 1.0,
+          "ndcg": 0.9197207891481876
+        },
+        {
+          "query_id": "Q5",
+          "precision": 0.4,
+          "recall": 1.0,
+          "ap": 1.0,
+          "rr": 1.0,
+          "ndcg": 1.0
+        },
+        {
+          "query_id": "Q6",
+          "precision": 0.2,
+          "recall": 1.0,
+          "ap": 1.0,
+          "rr": 1.0,
+          "ndcg": 1.0
+        },
+        {
+          "query_id": "Q7",
+          "precision": 0.2,
+          "recall": 1.0,
+          "ap": 1.0,
+          "rr": 1.0,
+          "ndcg": 1.0
+        },
+        {
+          "query_id": "Q8",
+          "precision": 0.4,
+          "recall": 1.0,
+          "ap": 0.8333333333333333,
+          "rr": 1.0,
+          "ndcg": 0.9197207891481876
+        }
+      ],
+      "mean": {
+        "precision": 0.32499999999999996,
+        "recall": 1.0,
+        "ap": 0.9374999999999999,
+        "rr": 1.0,
+        "ndcg": 0.9698952959305703
+      },
+      "mean_latency_ms": 0.008247749999999998
+    },
+    "TF-IDF cosine": {
+      "rows": [
+        {
+          "query_id": "Q1",
+          "precision": 0.2,
+          "recall": 1.0,
+          "ap": 1.0,
+          "rr": 1.0,
+          "ndcg": 1.0
+        },
+        {
+          "query_id": "Q2",
+          "precision": 0.4,
+          "recall": 1.0,
+          "ap": 1.0,
+          "rr": 1.0,
+          "ndcg": 1.0
+        },
+        {
+          "query_id": "Q3",
+          "precision": 0.4,
+          "recall": 1.0,
+          "ap": 1.0,
+          "rr": 1.0,
+          "ndcg": 1.0
+        },
+        {
+          "query_id": "Q4",
+          "precision": 0.4,
+          "recall": 1.0,
+          "ap": 1.0,
+          "rr": 1.0,
+          "ndcg": 1.0
+        },
+        {
+          "query_id": "Q5",
+          "precision": 0.4,
+          "recall": 1.0,
+          "ap": 1.0,
+          "rr": 1.0,
+          "ndcg": 1.0
+        },
+        {
+          "query_id": "Q6",
+          "precision": 0.2,
+          "recall": 1.0,
+          "ap": 1.0,
+          "rr": 1.0,
+          "ndcg": 1.0
+        },
+        {
+          "query_id": "Q7",
+          "precision": 0.2,
+          "recall": 1.0,
+          "ap": 1.0,
+          "rr": 1.0,
+          "ndcg": 1.0
+        },
+        {
+          "query_id": "Q8",
+          "precision": 0.4,
+          "recall": 1.0,
+          "ap": 0.5833333333333333,
+          "rr": 0.5,
+          "ndcg": 0.6934264036172708
+        }
+      ],
+      "mean": {
+        "precision": 0.32499999999999996,
+        "recall": 1.0,
+        "ap": 0.9479166666666666,
+        "rr": 0.9375,
+        "ndcg": 0.9616783004521589
+      },
+      "mean_latency_ms": 0.01238869775
+    },
+    "BM25": {
+      "rows": [
+        {
+          "query_id": "Q1",
+          "precision": 0.2,
+          "recall": 1.0,
+          "ap": 1.0,
+          "rr": 1.0,
+          "ndcg": 1.0
+        },
+        {
+          "query_id": "Q2",
+          "precision": 0.4,
+          "recall": 1.0,
+          "ap": 1.0,
+          "rr": 1.0,
+          "ndcg": 1.0
+        },
+        {
+          "query_id": "Q3",
+          "precision": 0.4,
+          "recall": 1.0,
+          "ap": 0.8333333333333333,
+          "rr": 1.0,
+          "ndcg": 0.9197207891481876
+        },
+        {
+          "query_id": "Q4",
+          "precision": 0.4,
+          "recall": 1.0,
+          "ap": 1.0,
+          "rr": 1.0,
+          "ndcg": 1.0
+        },
+        {
+          "query_id": "Q5",
+          "precision": 0.4,
+          "recall": 1.0,
+          "ap": 1.0,
+          "rr": 1.0,
+          "ndcg": 1.0
+        },
+        {
+          "query_id": "Q6",
+          "precision": 0.2,
+          "recall": 1.0,
+          "ap": 1.0,
+          "rr": 1.0,
+          "ndcg": 1.0
+        },
+        {
+          "query_id": "Q7",
+          "precision": 0.2,
+          "recall": 1.0,
+          "ap": 1.0,
+          "rr": 1.0,
+          "ndcg": 1.0
+        },
+        {
+          "query_id": "Q8",
+          "precision": 0.4,
+          "recall": 1.0,
+          "ap": 0.5833333333333333,
+          "rr": 0.5,
+          "ndcg": 0.6934264036172708
+        }
+      ],
+      "mean": {
+        "precision": 0.32499999999999996,
+        "recall": 1.0,
+        "ap": 0.9270833333333333,
+        "rr": 0.9375,
+        "ndcg": 0.9516433990956823
+      },
+      "mean_latency_ms": 0.01104460425
+    }
+  }
+}
